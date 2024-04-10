@@ -1,0 +1,77 @@
+body, h2, form, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+html {
+    height: 100%;
+}
+body {
+	background-color: #321D6A;
+	background-image: url(https://i.ibb.co/s6NRwBF/deal-Or-No-Deal-Background.jpg);
+	background-size: 100% 120%;
+	height: 100%;
+	width: 100%;
+}
+
+h2 {
+    color: #c8a913;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.ticket-values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.ticket-values label {
+    background-color: #fff;
+    border: 2px solid #c8a913;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.ticket-values label:hover {
+    transform: translateY(-5px);
+}
+
+.ticket-values input[type="checkbox"] {
+    display: none;
+}
+
+.ticket-values input[type="checkbox"]:checked + span {
+    color: #fff;
+    background-color: #c8a913;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.results {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.results p {
+    background-color: #c8a913;
+    color: #fff;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 5px;
+}

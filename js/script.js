@@ -13,11 +13,13 @@ function calculateAndDisplayValues() {
         return;
     }
 
-    const expectedValue = remainingValues.reduce((acc, val) => acc + val, 0) / remainingValues.length;
-    const minDeal = expectedValue * 0.75;
+    const expectedValue = calculateExpectedValue(remainingValues);
+    const standardDeviation = calculateStandardDeviation(remainingValues, expectedValue);
+    const riskAversionCoefficient = 0.5;
+    const fairDeal = expectedValue - (riskAversionCoefficient * standardDeviation);
 
     document.getElementById('expectedValue').textContent = expectedValue.toFixed(2);
-    document.getElementById('minDeal').textContent = minDeal.toFixed(2);
+    document.getElementById('minDeal').textContent = fairDeal.toFixed(2);
 }
 
 document.getElementById('ticketForm').addEventListener('change', calculateAndDisplayValues);
@@ -29,9 +31,19 @@ document.querySelectorAll('.ticket-values input[type="checkbox"]').forEach(box =
             this.parentElement.style.color = "#fff";
         } else {
             this.parentElement.style.backgroundColor = "#fff";
-            this.parentElement.style.color = "#000"; // Or whatever your default label text color is
+            this.parentElement.style.color = "#000";
         }
     });
 });
+
+function calculateExpectedValue(values) {
+    const sum = values.reduce((acc, val) => acc + val, 0);
+    return sum / values.length;
+}
+
+function calculateStandardDeviation(values, mean) {
+    const variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length;
+    return Math.sqrt(variance);
+}
 
 calculateAndDisplayValues();
